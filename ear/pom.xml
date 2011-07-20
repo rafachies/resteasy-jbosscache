@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>org.rafael</groupId>
+		<artifactId>cachespike-parent</artifactId>
+		<version>SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.rafael</groupId>
+	<artifactId>cachespike</artifactId>
+	<version>SNAPSHOT</version>
+	<packaging>ear</packaging>
+
+	<build>
+		<finalName>cachespike</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<modules>
+						<ejbModule>
+							<groupId>org.rafael</groupId>
+							<artifactId>cachespike-ejb</artifactId>
+							<bundleFileName>cachespike.jar</bundleFileName>
+						</ejbModule>
+						<webModule>
+							<groupId>org.rafael</groupId>
+							<artifactId>cachespike-web</artifactId>
+							<bundleFileName>cachespike.war</bundleFileName>
+							<contextRoot>/cachespike</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<copy todir="/home/chies/Documents/redhat/mapfre/jboss-eap-5.1/jboss-as/server/spikes01/deploy" preservelastmodified="true">
+									<fileset dir="target">
+										<include name="cachespike.ear"/>
+									</fileset>
+								</copy>
+								<copy todir="/home/chies/Documents/redhat/mapfre/jboss-eap-5.1/jboss-as/server/spikes02/deploy" preservelastmodified="true">
+									<fileset dir="target">
+										<include name="cachespike.ear"/>
+									</fileset>
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.rafael</groupId>
+			<artifactId>cachespike-ejb</artifactId>
+			<version>SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.rafael</groupId>
+			<artifactId>cachespike-web</artifactId>
+			<version>SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+</project>

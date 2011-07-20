@@ -1,0 +1,17 @@
+<webapp-structure>
+  <registeredFiles>
+    <entry>
+      <string>currentBuild</string>
+      <path-set>
+        <pathsSet class="linked-hash-set">
+          <string>WEB-INF/web.xml</string>
+          <string>WEB-INF/classes/org/rafael/cachespike/resource/CarResource.class</string>
+          <string>WEB-INF/lib/resteasy-jaxrs-2.0.1.GA.jar</string>
+          <string>WEB-INF/lib/scannotation-1.0.2.jar</string>
+          <string>WEB-INF/lib/jaxrs-api-2.0.1.GA.jar</string>
+          <string>WEB-INF/lib/resteasy-jaxb-provider-2.0.1.GA.jar</string>
+        </pathsSet>
+      </path-set>
+    </entry>
+  </registeredFiles>
+</webapp-structure>
